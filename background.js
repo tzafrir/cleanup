@@ -15,7 +15,9 @@ function initialize() {
     newPlus.init(function(response) {
       if (response.status) {
         plus = newPlus;
-        cleanup();
+        if (localStorage['enabled'] == 'true') {
+          cleanup();
+        }
       } else {
         initTimeoutId = window.setTimeout(initialize, INIT_RETRY_INTERVAL);
       }
@@ -64,3 +66,11 @@ function cleanup() {
   };
   plus.lookupActivities(work, null, plus.getInfo().id);
 }
+
+function onRequest(request, sender, callback) {
+  if (request.type == 'enableCleanup') {
+    cleanup();
+    callback();
+  }
+}
+chrome.extension.onRequest.addListener(onRequest);

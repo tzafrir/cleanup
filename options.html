@@ -1,0 +1,52 @@
+<!doctype html>
+<head>
+  <title>Invite Cleanup</title>
+  <script src="options.js"></script>
+  <style>
+  body {
+    background: url(img/background.jpg) no-repeat center center fixed;
+    background-size: cover;
+    font-family: sans-serif;
+    color: #202020;
+  }
+
+  .wrapper {
+    width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 25px;
+    text-align: center;
+    -webkit-transition: all 0.7s ease-in-out;
+  }
+
+  .wrapper p {
+    padding: 5px 20px;
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  button#enableButton {
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #ddddd0;
+    cursor: pointer;
+  }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Invite Cleanup</h1>
+    <p>
+      Once you enable this extension, it will keep your Google+ profile clear of stale hangout invite posts.
+    </p>
+    <p>
+      Every hangout invite post from the past 5 days, which no longer invites to an active hangout, and doesn't have comments on it, will be deleted routinely by this extension in the background.
+    </p>
+  </div>
+  <div class="wrapper" id="buttonWrapper" style="display: none">
+    <button id="enableButton">enable cleanup</button>
+  </div>
+</body>

@@ -4,6 +4,7 @@
    "background": {
      "page": "background.html"
    },
+   "options_page": "options.html",
    "description": "Removes hangout invites from your profile",
    "icons": {
       "128": "icon128.png",
