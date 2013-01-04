@@ -74,3 +74,9 @@ function onRequest(request, sender, callback) {
   }
 }
 chrome.extension.onRequest.addListener(onRequest);
+
+if (localStorage['firstLoad'] != 'false') {
+  chrome.tabs.create({url: chrome.extension.getURL('options.html')}, function() {
+    localStorage['firstLoad'] = 'false';
+  });
+}
