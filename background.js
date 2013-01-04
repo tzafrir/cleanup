@@ -61,7 +61,7 @@ function cleanup() {
       if (post.time < startOfSearch) {
         return;
       }
-      if (post.type == 'hangout' && post.data.active === false) {
+      if (post.type == 'hangout' && post.data.type == 0 && post.data.active === false) {
         if (post.num_comments == 0) {
           // Kill it with fire
           plus.deleteActivity(function(response) {
