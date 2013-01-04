@@ -4,6 +4,15 @@ var CLEANUP_REPEAT_INTERVAL = 10 * 60*1000;
 
 var plus;
 
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-27041781-8']);
+
+(function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = 'https://ssl.google-analytics.com/ga.js';
+ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
 var initTimeoutId;
 function initialize() {
   var newPlus = new GooglePlusAPI();
@@ -55,7 +64,10 @@ function cleanup() {
       if (post.type == 'hangout' && post.data.active === false) {
         if (post.num_comments == 0) {
           // Kill it with fire
-          plus.deleteActivity(function(){}, post.id);
+          plus.deleteActivity(function(response) {
+            var s = response.status ? 'Success' : 'Failure';
+            _gaq.push(['_trackEvent', 'DeletePost', s]);
+          }, post.id);
         }
       }
     }
